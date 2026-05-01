@@ -137,6 +137,47 @@
     filter: blur(80px);
     opacity: 0.55;
     pointer-events: none;
+    transition: transform 0.1s linear;
+  }
+
+  .pricing-card {
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 400ms ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 8%, transparent) inset,
+      0 30px 70px -20px color-mix(in oklab, var(--brand) 35%, transparent);
+  }
+  .pricing-card-featured {
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 10%, transparent) inset,
+      0 25px 70px -20px color-mix(in oklab, var(--brand) 45%, transparent),
+      0 0 60px -10px color-mix(in oklab, var(--brand-2) 35%, transparent);
+  }
+  .pricing-card-featured:hover {
+    transform: translateY(-8px);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, white 14%, transparent) inset,
+      0 40px 90px -20px color-mix(in oklab, var(--brand) 60%, transparent),
+      0 0 90px -10px color-mix(in oklab, var(--brand-2) 50%, transparent);
+  }
+
+  @keyframes hero-rise {
+    from { opacity: 0; transform: translate3d(0, 24px, 0); }
+    to { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  .hero-rise {
+    opacity: 0;
+    animation: hero-rise 800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-rise { animation: none; opacity: 1; }
+    .pricing-card, .pricing-card:hover,
+    .pricing-card-featured, .pricing-card-featured:hover { transform: none; transition: none; }
   }
 }
 
