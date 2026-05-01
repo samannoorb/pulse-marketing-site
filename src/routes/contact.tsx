@@ -129,7 +129,7 @@ function Field({ label, ...props }: { label: string } & React.InputHTMLAttribute
       <Label>{label}</Label>
       <input
         {...props}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none placeholder:text-muted-foreground focus:border-[color-mix(in_oklab,var(--brand)_50%,transparent)]"
+        className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground hover:border-white/20 focus:border-[color-mix(in_oklab,var(--brand)_50%,transparent)]"
       />
     </div>
   );
