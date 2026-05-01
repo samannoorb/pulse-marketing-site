@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { Mail, MessageSquare, MapPin, Send, Check } from "lucide-react";
 

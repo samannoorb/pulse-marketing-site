@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { Reveal } from "@/components/site/Reveal";
 import { Brain, LineChart, Bell, Workflow, Zap, Shield, Database, Mail, GitBranch, Users, Globe, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/features")({
@@ -52,28 +53,34 @@ const groups = [
 function FeaturesPage() {
   return (
     <div className="pt-10 md:pt-20">
-      <SectionHeading
-        eyebrow="Features"
-        title={<>Everything you need.<br /><span className="gradient-text">Nothing you don't.</span></>}
-        subtitle="Pulse is opinionated. We pick the best defaults so you can answer the question: what should we do this week?"
-      />
+      <Reveal>
+        <SectionHeading
+          eyebrow="Features"
+          title={<>Everything you need.<br /><span className="gradient-text">Nothing you don't.</span></>}
+          subtitle="Pulse is opinionated. We pick the best defaults so you can answer the question: what should we do this week?"
+        />
+      </Reveal>
 
-      <div className="mt-20 space-y-20">
+      <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
         {groups.map((g) => (
           <div key={g.title}>
-            <div className="mb-8 flex items-baseline gap-4">
-              <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">{g.title}</h3>
-              <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {g.items.map((item) => (
-                <div key={item.title} className="glass rounded-2xl p-6">
-                  <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand)_30%,transparent),color-mix(in_oklab,var(--brand-2)_30%,transparent))]">
-                    <item.icon className="h-5 w-5" />
+            <Reveal>
+              <div className="mb-6 flex items-baseline gap-4 md:mb-8">
+                <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">{g.title}</h3>
+                <div className="h-px flex-1 bg-gradient-to-r from-white/10 to-transparent" />
+              </div>
+            </Reveal>
+            <div className="grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+              {g.items.map((item, i) => (
+                <Reveal key={item.title} delay={i * 80}>
+                  <div className="glass group h-full rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--brand)_30%,transparent)]">
+                    <div className="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand)_30%,transparent),color-mix(in_oklab,var(--brand-2)_30%,transparent))] transition-transform group-hover:scale-110">
+                      <item.icon className="h-5 w-5" />
+                    </div>
+                    <h4 className="text-base font-semibold">{item.title}</h4>
+                    <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
                   </div>
-                  <h4 className="text-base font-semibold">{item.title}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.desc}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
