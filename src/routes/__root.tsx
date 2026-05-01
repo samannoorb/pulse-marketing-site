@@ -29,7 +29,7 @@ export const Route = createRootRoute({
   }),
   shellComponent: RootShell,
   component: RootComponent,
-  notFoundComponent: NotFoundComponent,
+  notFoundComponent: NotFound,
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
@@ -51,7 +51,7 @@ function RootComponent() {
     <>
       <Background />
       <Header />
-      <main className="mx-auto w-full max-w-6xl px-6">
+      <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <Outlet />
       </main>
       <Footer />
