@@ -76,63 +76,68 @@ function PricingPage() {
         </div>
       </div>
 
-      <div className="mt-12 grid gap-5 lg:grid-cols-3">
-        {tiers.map((t) => {
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {tiers.map((t, i) => {
           const price = yearly ? t.yearly : t.monthly;
           return (
-            <div
-              key={t.name}
-              className={cn(
-                "relative flex flex-col rounded-3xl p-8",
-                t.highlight ? "glass-strong gradient-border" : "glass",
-              )}
-            >
-              {t.highlight && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[linear-gradient(120deg,var(--brand),var(--brand-2))] px-3 py-1 text-xs font-semibold text-primary-foreground">
-                  Most popular
-                </span>
-              )}
-              <h3 className="font-display text-xl font-semibold">{t.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{t.blurb}</p>
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="text-5xl font-semibold tracking-tight">${price}</span>
-                <span className="text-sm text-muted-foreground">/ month</span>
+            <Reveal key={t.name} delay={i * 100} className={cn(t.highlight && "sm:col-span-2 lg:col-span-1")}>
+              <div
+                className={cn(
+                  "pricing-card relative flex h-full flex-col rounded-3xl p-7 sm:p-8",
+                  t.highlight ? "glass-strong gradient-border pricing-card-featured" : "glass",
+                )}
+              >
+                {t.highlight && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[linear-gradient(120deg,var(--brand),var(--brand-2))] px-3 py-1 text-xs font-semibold text-primary-foreground shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--brand)_70%,transparent)]">
+                    Most popular
+                  </span>
+                )}
+                <h3 className="font-display text-xl font-semibold">{t.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{t.blurb}</p>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="text-5xl font-semibold tracking-tight">${price}</span>
+                  <span className="text-sm text-muted-foreground">/ month</span>
+                </div>
+                {yearly && t.monthly > 0 && (
+                  <p className="mt-1 text-xs text-muted-foreground">billed yearly · save ${(t.monthly - t.yearly) * 12}/yr</p>
+                )}
+                <Button variant={t.highlight ? "hero" : "outline"} size="lg" className="mt-6" asChild>
+                  <Link to={t.name === "Scale" ? "/contact" : "/contact"}>{t.cta}</Link>
+                </Button>
+                <ul className="mt-8 space-y-3 text-sm">
+                  {t.features.map((f) => (
+                    <li key={f} className="flex items-start gap-3">
+                      <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand)_30%,transparent),color-mix(in_oklab,var(--brand-2)_30%,transparent))]">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      <span className="text-foreground/85">{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              {yearly && t.monthly > 0 && (
-                <p className="mt-1 text-xs text-muted-foreground">billed yearly · save ${(t.monthly - t.yearly) * 12}/yr</p>
-              )}
-              <Button variant={t.highlight ? "hero" : "outline"} size="lg" className="mt-6" asChild>
-                <Link to={t.name === "Scale" ? "/contact" : "/"}>{t.cta}</Link>
-              </Button>
-              <ul className="mt-8 space-y-3 text-sm">
-                {t.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand)_30%,transparent),color-mix(in_oklab,var(--brand-2)_30%,transparent))]">
-                      <Check className="h-3 w-3" />
-                    </span>
-                    <span className="text-foreground/85">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </Reveal>
           );
         })}
       </div>
 
       {/* FAQ */}
-      <section className="mt-28">
-        <SectionHeading title="Common questions" />
+      <section className="mt-24 md:mt-28">
+        <Reveal>
+          <SectionHeading title="Common questions" />
+        </Reveal>
         <div className="mx-auto mt-12 grid max-w-3xl gap-4">
           {[
             { q: "Can I switch plans later?", a: "Yes — upgrade or downgrade at any time. We'll prorate the difference automatically." },
             { q: "What counts as an event?", a: "Any tracked user action or metric data point. Most early-stage startups use under 100k events / month." },
             { q: "Do you offer a startup discount?", a: "Yes. Pre-seed and seed teams get 50% off Growth for the first year. Reach out via Contact." },
             { q: "Is my data secure?", a: "Absolutely. We're SOC 2 Type II certified, with encryption in transit and at rest, and optional region pinning." },
-          ].map((f) => (
-            <div key={f.q} className="glass rounded-2xl p-6">
-              <h4 className="font-semibold">{f.q}</h4>
-              <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
-            </div>
+          ].map((f, i) => (
+            <Reveal key={f.q} delay={i * 80}>
+              <div className="glass rounded-2xl p-6 transition-colors hover:border-white/20">
+                <h4 className="font-semibold">{f.q}</h4>
+                <p className="mt-2 text-sm text-muted-foreground">{f.a}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
