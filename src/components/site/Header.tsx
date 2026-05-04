@@ -34,7 +34,7 @@ export function Header() {
           to="/"
           className="flex items-center gap-2 font-display text-base font-semibold transition-opacity hover:opacity-80 active:opacity-60"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-xl bg-foreground text-background">
+          <span className="grid h-8 w-8 place-items-center rounded-xl bg-white/[0.08] border border-white/15 text-foreground shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]">
             <Activity className="h-4 w-4" />
           </span>
           <span>
