@@ -29,6 +29,7 @@ export function Background() {
           left: -150,
           transform: `translate3d(0, ${y * 0.18}px, 0)`,
           background: "radial-gradient(circle, var(--brand) 0%, transparent 60%)",
+          opacity: 0.28,
         }}
       />
       <div
@@ -40,7 +41,7 @@ export function Background() {
           right: -150,
           transform: `translate3d(0, ${y * -0.12}px, 0)`,
           background: "radial-gradient(circle, var(--brand-2) 0%, transparent 60%)",
-          opacity: 0.4,
+          opacity: 0.2,
         }}
       />
       <div
