@@ -135,7 +135,7 @@
     position: absolute;
     border-radius: 9999px;
     filter: blur(80px);
-    opacity: 0.55;
+    opacity: 0.35;
     pointer-events: none;
     transition: transform 0.1s linear;
   }
