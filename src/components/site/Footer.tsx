@@ -10,7 +10,7 @@ export function Footer() {
             to="/"
             className="flex items-center gap-2 font-display text-base font-semibold transition-opacity hover:opacity-80 active:opacity-60"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-[linear-gradient(135deg,var(--brand),var(--brand-2))]">
+            <span className="grid h-8 w-8 place-items-center rounded-xl bg-[var(--brand)]">
               <Activity className="h-4 w-4 text-primary-foreground" />
             </span>
             Pulse Analytics
