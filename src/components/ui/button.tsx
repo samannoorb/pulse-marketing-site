@@ -17,7 +17,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-white/5 text-foreground/80 hover:text-foreground",
         link: "text-foreground underline-offset-4 hover:underline rounded-none",
         hero:
-          "relative text-primary-foreground font-semibold bg-[var(--brand)] shadow-[0_8px_24px_-10px_color-mix(in_oklab,var(--brand)_60%,transparent)] hover:bg-[color-mix(in_oklab,var(--brand)_90%,white)] hover:-translate-y-0.5",
+          "relative font-semibold bg-foreground text-background shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)] hover:bg-foreground/90 hover:-translate-y-0.5",
         glass:
           "glass text-foreground hover:bg-white/10",
       },
