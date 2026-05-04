@@ -34,7 +34,7 @@ export function Header() {
           to="/"
           className="flex items-center gap-2 font-display text-base font-semibold transition-opacity hover:opacity-80 active:opacity-60"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-xl bg-[linear-gradient(135deg,var(--brand),var(--brand-2))] shadow-[0_8px_30px_-8px_color-mix(in_oklab,var(--brand)_70%,transparent)]">
+          <span className="grid h-8 w-8 place-items-center rounded-xl bg-[var(--brand)] shadow-[0_6px_20px_-8px_color-mix(in_oklab,var(--brand)_60%,transparent)]">
             <Activity className="h-4 w-4 text-primary-foreground" />
           </span>
           <span>
